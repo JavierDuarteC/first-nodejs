@@ -10,3 +10,6 @@ app.listen(3000,function(){
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname,'index.html'))
 })
+app.get('/bundle.js', function(req, res){
+    res.sendFile(path.join(__dirname,'bundle.js'))
+})
