@@ -4,7 +4,7 @@
   "description": "My first nodejs project",
   "main": "index.js",
   "scripts": {
-    "build":"browserify -t reactify app.js > bundle.js",
+    "build": "browserify -t reactify app.js > bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +20,8 @@
   "dependencies": {
     "browserify": "^16.3.0",
     "express": "^4.17.1",
-    "mongodb": "^3.3.0-beta2",
     "react": "^16.8.6",
+    "mongodb": "^2.2.33",
     "react-dom": "^16.8.6",
     "reactify": "^1.1.1"
   }
