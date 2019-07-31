@@ -1,5 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Clock = require('./reloj.js');
+
 
 // ReactDOM.render(
 //     <div>Hola mundo cruel!</div>, document.getElementById('main')
@@ -19,3 +21,7 @@ function tick() {
     );
 }
 setInterval(tick, 1000);
+
+ReactDOM.render(<Clock />,
+    document.getElementById('main1')
+);

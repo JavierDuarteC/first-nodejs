@@ -1,6 +1,8 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Clock = require('./reloj.js');
+
 
 // ReactDOM.render(
 //     <div>Hola mundo cruel!</div>, document.getElementById('main')
@@ -21,7 +23,11 @@ function tick() {
 }
 setInterval(tick, 1000);
 
-},{"react":11,"react-dom":8}],2:[function(require,module,exports){
+ReactDOM.render(React.createElement(Clock, null),
+    document.getElementById('main1')
+);
+
+},{"./reloj.js":18,"react":11,"react-dom":8}],2:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -25146,4 +25152,35 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":12,"./cjs/scheduler-tracing.production.min.js":13,"_process":3}]},{},[1]);
+},{"./cjs/scheduler-tracing.development.js":12,"./cjs/scheduler-tracing.production.min.js":13,"_process":3}],18:[function(require,module,exports){
+var React = require('react')
+class Clock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date() };
+    }
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+                    1000
+        );
+    }
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+    tick() {
+        this.setState({
+            date: new Date()
+        });
+    }
+    render() {
+        return (
+        React.createElement("div", null, 
+            React.createElement("h1", null, "Hola, mundo cruel react!"), 
+            React.createElement("h2", null, "It is ", this.state.date.toLocaleTimeString(), ".")
+        ));
+    }
+}
+module.exports = Clock;
+
+},{"react":11}]},{},[1]);
