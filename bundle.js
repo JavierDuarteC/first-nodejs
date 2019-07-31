@@ -2,9 +2,24 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-ReactDOM.render(
-    React.createElement("div", null, "Hola mundo cruel!"), document.getElementById('main')
-);
+// ReactDOM.render(
+//     <div>Hola mundo cruel!</div>, document.getElementById('main')
+// );
+
+function tick() {
+    const element = (
+        React.createElement("div", null, 
+            React.createElement("h1", null, "Hola, mundo cruel!"), 
+            React.createElement("h2", null, "It is ", new Date().toLocaleTimeString(), ".")
+        )
+    );
+    ReactDOM.render(
+        element,
+        document
+            .getElementById('main')
+    );
+}
+setInterval(tick, 1000);
 
 },{"react":11,"react-dom":8}],2:[function(require,module,exports){
 /*
